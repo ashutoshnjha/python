@@ -17,7 +17,7 @@ class ZipDownload(object):
         self.target = target;
 
     def download(self) :
-        #print("Given source url is {0} and local target directory is {1}".format(self.sourceUrl, self.target));
+        print("Given source url is {0} and local target directory is {1}".format(self.sourceUrl, self.target));
         outputFilePath = os.path.join(self.target, os.path.basename(self.sourceUrl));
         try:
             fObj = urlopen(self.sourceUrl); # Refer https://docs.python.org/2/library/urllib2.html#urllib2.urlopen
