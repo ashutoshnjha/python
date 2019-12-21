@@ -5,7 +5,7 @@ from zipfile import ZipFile
 
 
 __author__ = "Ashutosh Narayan Jha"
-__copyright__ = "Copyright 2019, IgnitedPeople"
+__copyright__ = "Copyright 2019, http://www.ignitedpeople.com/"
 __license__ = "GPL"
 __version__ = "1.0.0"
 __maintainer__ = "Ashutosh Narayan Jha"
