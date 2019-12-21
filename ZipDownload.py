@@ -27,9 +27,9 @@ class ZipDownload(object):
             with open(outputFilePath, "wb") as local_file:
                 local_file.write(fObj.read());
 
-        except HTTPError, e:
+        except (HTTPError, e):
             print ("HTTP Error:", e.code, self.sourceUrl);
-        except URLError, e:
+        except (URLError, e):
             print ("URL Error:", e.reason, self.sourceUrl);
 
        # Call zipExtractor.
