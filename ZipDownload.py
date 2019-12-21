@@ -3,7 +3,6 @@ import os
 from urllib2 import urlopen, URLError, HTTPError
 from zipfile import ZipFile
 
-
 __author__ = "Ashutosh Narayan Jha"
 __copyright__ = "Copyright 2019, IgnitedPeople"
 __license__ = "GPL"
@@ -17,35 +16,33 @@ class ZipDownload(object):
         self.target = target;
 
     def download(self) :
-        #print("Given source url is {0} and local target directory is {1}".format(self.sourceUrl, self.target));
+        print("Given source url is {0} and local target directory is {1}".format(self.sourceUrl, self.target));
         outputFilePath = os.path.join(self.target, os.path.basename(self.sourceUrl));
         try:
             fObj = urlopen(self.sourceUrl); # Refer https://docs.python.org/2/library/urllib2.html#urllib2.urlopen
 
-            print ("downloading " + self.sourceUrl)
+            print ("Downloading " + self.sourceUrl);
 
-            # Open our local file for writing
+            # Open a local file to write to disk.
             with open(outputFilePath, "wb") as local_file:
-                local_file.write(fObj.read())
+                local_file.write(fObj.read());
 
-       #handle errors
         except HTTPError, e:
             print ("HTTP Error:", e.code, self.sourceUrl);
         except URLError, e:
             print ("URL Error:", e.reason, self.sourceUrl);
-        
-       # Call zipExtractor.
-        ZipDownload.extractZip(outputFilePath, os.path.join(self.target, ''));
 
-    @staticmethod
-    def extractZip(fullFilePath, targetDir):
-        print (targetDir);
+       # Call zipExtractor.
+        self.extractZip(outputFilePath, os.path.join(self.target, ''));
+
+    def extractZip(self, fullFilePath, targetDir):
         with ZipFile(fullFilePath, 'r') as zip: 
             zip.printdir(); # printing all the contents of the zip file 
-
             print('Extracting files at: ' + targetDir) 
             zip.extractall(targetDir);
             print('Extracted!');
+
+
 
 # If this file is called directly.
 if __name__ == "__main__":
